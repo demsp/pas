@@ -13,7 +13,7 @@ data_arr[2]:=1;
  i:=1;
  //readln(str_arr);       //считываем строку
  //str_arr:=',_>,_<-{^/}>^\.'; //max
- str_arr:='+}^.>-.<_{';
+ str_arr:='.}^.>-<_{';
  
  z_flag:=1; 
  pz_flag:=1;
