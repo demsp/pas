@@ -1,3 +1,5 @@
+// https://ideone.com/msHSaG
+
 LABEL prev, prev1,prev2,prev3,next;
 var
  //data_arr:array[1..10] of integer;    
