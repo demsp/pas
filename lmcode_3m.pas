@@ -30,7 +30,8 @@ data_arr[3]:=3;
 //str_arr:='}^.>-<_{'; //10,8,6,4,2,0
 
   // multiply
-str_arr:='.}>>>^<+>_<<< ^>-<_{';
+//str_arr:='.}>>>^<+>_<<< ^>-<_{';
+str_arr:='.!>>>^<+>_<<< ^>-<_(?)';
  
  prev:
  if i>length(str_arr) then goto next;
