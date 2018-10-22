@@ -26,7 +26,7 @@ data_arr[3]:=3;
 
 //str_arr:=',_>,_<-{^?}>^!.'; //max
 
-// cycle_output_ from10to0 10,2
+// even integer_from_10_to_0 10,2
 //str_arr:='}^.>-<_{'; //10,8,6,4,2,0
 
   // multiply 4,1,3
@@ -130,7 +130,7 @@ writeln('z_flag = ',z_flag);
 writeln('pz_flag = ',pz_flag);
 end.
 
-
+// multyply brp
 {--------
  INP
  STA 20
@@ -150,7 +150,7 @@ end.
  HLT
  --------}
 
-
+// multyply brz
 {-------
  INP
  STA 20
