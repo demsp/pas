@@ -19,19 +19,21 @@ jmp_stor:=0;
 
 j:=1;               
 i:=1;
-//data_arr[1]:=10;
-//data_arr[2]:=2;
 
 data_arr[1]:=4;
 data_arr[2]:=1;
 data_arr[3]:=3;
 
 //str_arr:=',_>,_<-{^?}>^!.'; //max
+
+// cycle_output_ from10to0 10,2
 //str_arr:='}^.>-<_{'; //10,8,6,4,2,0
 
-  // multiply
+  // multiply 4,1,3
 //str_arr:='.}>>>^<+>_<<< ^>-<_{';
-str_arr:='.!>>>^<+>_<<< ^>-<_(?)';
+//str_arr:='.!>>>^<+>_<<< ^>-<_(?)';
+//fibo 5,1,1
+str_arr:='}>>^>+._<+._<<^>-<_{';
  
  prev:
  if i>length(str_arr) then goto next;
