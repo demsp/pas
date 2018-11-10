@@ -10,6 +10,7 @@ i,j,k: integer;
 acc:integer;
 i_stor: integer; 
 bracket_flag:integer;
+digit_flag:integer;
 
 //Stack
 procedure push(c: integer);
@@ -29,28 +30,25 @@ i:=1;
 size := 0; {Изначально стек пуст}
 //readln(str_arr); //считываем строку
 // str_arr:='+++[>+++[>+<-]<-]'; // 3*3=9
-str_arr:='[1[1[1]]]'; 
+str_arr:='[1[2[3]]]'; 
 
 prev:
 if i>length(str_arr) then goto next;
 
-if(str_arr[i]='1') then begin 
+if(str_arr[i]='1')or(str_arr[i]='2')or(str_arr[i]='3') then begin 
+if (digit_flag=1) then begin
 acc:=acc+(integer(str_arr[i])-integer('0'));
-if (bracket_flag=0) then str_arr[i]:='q';
+str_arr[i]:='q';
+digit_flag:=0;
 end;
-
-// if (str_arr[i]='+') then data_arr[j]:= data_arr[j]+1;
-// if (str_arr[i]='-') then data_arr[j]:= data_arr[j]-1;
-// if (str_arr[i]='>') then j:=j+1;
-// if (str_arr[i]='<') then j:=j-1;
-// if (str_arr[i]='.') then write(chr(data_arr[j]));
+end;
 
 // скобки
 if (str_arr[i]='[') then begin 
 if(bracket_flag=0) then Push(i);
 if(bracket_flag=1) then 
 begin
-bracket_flag:=0;
+//bracket_flag:=0;
 str_arr[i]:=' ';
 end;
 end;
@@ -58,12 +56,12 @@ end;
 if (str_arr[i]=']') then
 begin
 str_arr[i]:=' ';
-
+digit_flag:=1;
 bracket_flag:=1;
 Pop();
 
 i := a[size+1];
-//str_arr[i]=' ';
+
 goto prev;
 
 end;
