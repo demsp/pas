@@ -29,11 +29,10 @@ begin
  //readln(str_arr);       //считываем строку
 
 //str_arr:='[+2[+33]]'; 
-str_arr:='[-5[-41]]';
+str_arr:='[-8[*22]]';
  
  prev:
  if i>length(str_arr) then goto next; 
- // first IF
  if(str_arr[i]='1')or(str_arr[i]='2')or(str_arr[i]='3')or(str_arr[i]='4')
  or(str_arr[i]='5')or(str_arr[i]='6')or(str_arr[i]='7')or(str_arr[i]='8') then begin
  if (first_oper=0) then begin 
@@ -42,14 +41,17 @@ str_arr:='[-5[-41]]';
  i_first_stor:=i;
  end;
  if (first_oper=1)and(i<>i_first_stor) then begin
+  //acc:=acc+(integer(str_arr[i])-integer('0'));
   if(sight='+')then acc:=acc+(integer(str_arr[i])-integer('0'));
   if(sight='-')then acc:=acc-(integer(str_arr[i])-integer('0'));
+  if(sight='*')then acc:=acc*(integer(str_arr[i])-integer('0'));
   str_arr[i]:=char(acc+integer('0'));
   first_oper:=0;
   str_arr[i_first_stor]:='_';
   end;
-// first IF end
+//...
 end;
+   // знаки
     if (str_arr[i]='+') then begin 
     if(bracket_flag=1) then str_arr[i]:='z';
     sight:='+';
@@ -57,6 +59,10 @@ end;
     if (str_arr[i]='-') then begin 
     if(bracket_flag=1) then str_arr[i]:='z';
     sight:='-';
+    end;
+    if (str_arr[i]='*') then begin 
+    if(bracket_flag=1) then str_arr[i]:='z';
+    sight:='*';
     end;
   // скобки
     if (str_arr[i]='[') then begin 
