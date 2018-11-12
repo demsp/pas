@@ -1,19 +1,15 @@
-Program bf5_stack;
- 
  LABEL prev,next;
 var
  a : array[1..10] of integer;
  size : integer;
  data_arr:array[1..10] of integer;    // массив данных
  str_arr: string;                     // команды  
- i,j,k: integer;                      // индексы строки и массива
- i_stor: integer; 
+ i,j: integer;                      // индексы строки и массива
  bracket_flag:integer;
  first_oper:integer;
- digit_stor:integer;
  sight:char;
  acc:integer;
-
+ i_first_stor:integer;
 //Stack
 procedure push(c : integer);
  begin
@@ -31,68 +27,46 @@ begin
  i:=1;
  size := 0; {Изначально стек пуст}
  //readln(str_arr);       //считываем строку
-
-//str_arr:='[[[+]]]'; 
-str_arr:='[- 4 3]'; 
+str_arr:='[+ 4 3]'; 
+str_arr:='[+2[+43]]'; 
  
  prev:
  if i>length(str_arr) then goto next; 
- if(str_arr[i]='1')or(str_arr[i]='2')or(str_arr[i]='3')or(str_arr[i]='4') then begin 
- if (acc=0) then begin
+ if(str_arr[i]='1')or(str_arr[i]='2')or(str_arr[i]='3')or(str_arr[i]='4')
+ or(str_arr[i]='5')or(str_arr[i]='6')or(str_arr[i]='7')or(str_arr[i]='8') then begin
+ if (first_oper=0) then begin 
  acc:=integer(str_arr[i])-integer('0');
- i_stor:=i;
+ first_oper:=1;
+ i_first_stor:=i;
  end;
- // sight
- if (acc<>0)and(sight='+')and(i<>i_stor) then begin
- acc:=acc+(integer(str_arr[i])-integer('0'));
- str_arr[i]:='#';
- end;
- if (acc<>0)and(sight='-')and(i<>i_stor) then begin
- acc:=acc-(integer(str_arr[i])-integer('0'));
- str_arr[i]:='#';
- end;
+ if (first_oper=1)and(i<>i_first_stor) then begin
+  acc:=acc+(integer(str_arr[i])-integer('0'));
+  str_arr[i]:=char(acc+integer('0'));
+  first_oper:=0;
+  str_arr[i_first_stor]:='_';
+  end;
 //...
-if (bracket_flag=1) then begin
- str_arr[i]:=char(acc+integer('0'));
-     end;
-//...     
 end;
-    if (str_arr[i]='+') then begin
-    sight:='+';
-    if (bracket_flag=1) then str_arr[i]:='%';
-    end;
-    if (str_arr[i]='-') then begin 
-    sight:='-';
-    if (bracket_flag=1) then str_arr[i]:='%';
-    end;
-   // if (str_arr[i]='-') then data_arr[j]:= data_arr[j]-1;
-   // if (str_arr[i]='>') then j:=j+1;
-   // if (str_arr[i]='<') then j:=j-1;
-   // if (str_arr[i]='.') then write(chr(data_arr[j]));
-   
-   // скобки
+    if (str_arr[i]='+') then sight:='+';
+    if (str_arr[i]='-') then sight:='-';
+  // скобки
     if (str_arr[i]='[') then begin 
+    acc:=0; first_oper:=0;
     if(bracket_flag=0) then Push(i);
-    if(bracket_flag=1) then str_arr[i]:='@';
+    if(bracket_flag=1) then str_arr[i]:='#';
     end;
           
     if (str_arr[i]=']') then
       begin
-      str_arr[i]:='@';
+      str_arr[i]:='#';
       bracket_flag:=1;
       Pop();
-      //if (data_arr[j]>0) then 
-      // begin
-        i := a[size+1];
+              i := a[size+1];
         goto prev;
-      // end;
-      end;
+        end;
  i:=i+1;
  goto prev;
  next:
-for k:=1 to 10 do begin 
-write(data_arr[k]);
-write(' ');
-end;
+
 writeln(str_arr);
 end.
