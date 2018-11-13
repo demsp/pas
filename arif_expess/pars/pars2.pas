@@ -31,17 +31,11 @@ while(com_mem[i]<>']')do begin
 end;
 com_mem_flag:=false;
 str_arr[m] := str;
+str:='          ';
 m:=m+1;
+k:=1;
 end;
 
-{
-if(com_mem[i]=']')and(com_mem_flag=true) then begin
-com_mem[i]:=' ';
-com_mem_flag:=false;
-str_arr[j] := str;
-j:=j+1;
-end;
-}
 i:=i+1;
  goto prev;
  next:
