@@ -13,7 +13,7 @@ str:='          ';
 i:=1;j:=1;k:=1;  
 com_mem_flag:=false;
 com_mem:='[!x[+aa]]';
-//func_list:=''; 
+//com_mem:='[!x[+aa]][!y[*aa]]';
 
 prev:
  if i>length(com_mem) then goto next; 
@@ -33,7 +33,10 @@ i:=i+1;
 k:=k+1;
 end;
 com_mem_flag:=false;
+str_arr[j] := str;
+j:=j+1;
 end;
+
 {
 if(com_mem[i]=']')and(com_mem_flag=true) then begin
 com_mem[i]:=' ';
@@ -50,15 +53,15 @@ i:=i+1;
 //str_arr[3] := 'Green1';
 
 {Выводим массив строк}
-for inn := 1 to 3 do
-begin
-writeln(str_arr[inn]);
-end;
+
 for inn := 1 to length(com_mem) do
 begin
 write(com_mem[inn]);
 end;
 writeln;
-writeln(str);
+//writeln(str);
+writeln();
+
+write(func_list[1]); write(str_arr[2]);
 
 end.     
