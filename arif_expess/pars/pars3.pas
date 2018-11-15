@@ -4,7 +4,7 @@ var
  str_arr1:array[1..3] of string; // числовое представление функции
  data_arr:array[1..10] of integer; // числовое представление функции
  str:string;
- i,j,k,m:integer;
+ i,j:integer;
  inn: integer;
  str_index:integer;
  com_mem:string;
@@ -17,17 +17,16 @@ var
  i_first_stor:integer;
  j_first_stor:integer;
  sight:char;
- //func_list:array[1..3] of char;
- func_name:char;
+
 begin
 str:='          ';
-i:=1;j:=1;k:=1;m:=1;  
+i:=1;j:=1;  
 str_index:=1;
 exclamation:=false;
 //com_mem:='[!x[+aa]]';
 //com_mem:='[!a[+$$]][!b[*$$]][!c[*2$]][.[a5]]';
 //com_mem:='[!a[+$$]][!b[*$$]][.a3][.a6][.b8]';
-com_mem:='[!a[-$#]][!b[*3$]][.a54][.b5]';
+com_mem:='[!a[-$#]][!b[*3$]][.a52][.b5]';
 
 prev:
  if i>length(com_mem) then goto next; 
@@ -39,25 +38,35 @@ prev:
  dot:=true;
  end;
  ///    ///    
+ if (exclamation=true) then begin 
+ if (com_mem[i]='a') or
+    (com_mem[i]='b') or
+    (com_mem[i]='c') or
+    (com_mem[i]='d') or
+    (com_mem[i]='e') or
+    (com_mem[i]='f') then str_index:=integer(com_mem[i])-96;
+ end;
 if (exclamation=true)and(com_mem[i]='[') then begin
 while(com_mem[i]<>']')do begin
- if(com_mem[i]<>'[') then  str[k]:=com_mem[i];
+ if(com_mem[i]<>'[') then  str[j]:=com_mem[i];
  i:=i+1;
- k:=k+1;
+ j:=j+1;
 end;
 exclamation:=false;
-str_arr[m] := str;
+str_arr[str_index] := str;
 str:='          ';
-m:=m+1;
-k:=1;
+j:=1;
 end;
 ///    ///
 if(dot=true)and(com_mem[i]<>']') then begin
  //writeln('dot= ', dot);
-if(com_mem[i]='a')or
-(com_mem[i]='b')or
-(com_mem[i]='c') then str_index:=integer(com_mem[i])-96;
-str:=str_arr[str_index];
+ if (com_mem[i]='a') or
+    (com_mem[i]='b') or
+    (com_mem[i]='c') or
+    (com_mem[i]='d') or
+    (com_mem[i]='e') or
+    (com_mem[i]='f') then str_index:=integer(com_mem[i])-96;
+    str:=str_arr[str_index];
   
 if(com_mem[i]='1')or(com_mem[i]='2')or(com_mem[i]='3')or(com_mem[i]='4')or 
 (com_mem[i]='5')or(com_mem[i]='6')or(com_mem[i]='7')or
@@ -82,13 +91,15 @@ end;
   if (str[j]='#') then str[j]:=second_oper;
     end;
  first_flag:=false;   
-  //writeln('str_arr1=',str_arr1[str_index]);
-  //\\//\\//\\//\\//\\//\\
-  //\\//\\//\\//\\//\\//\\
-  //\\//\\//\\//\\//\\//\\
   //str_arr1[str_index]:=str;
   for j:=1 to length(str) do begin
   ///\\\///\\\///\\\
+ //знаки
+    if (str[j]='+') or
+       (str[j]='-') or
+       (str[j]='*') or
+       (str[j]='/') then sight:=str[j];
+ // числа    
  if(str[j]='1')or(str[j]='2')or(str[j]='3')
  or(str[j]='4')or(str[j]='5')or(str[j]='6')
  or(str[j]='7')or(str[j]='8')or(str[j]='9')or(str[j]='~') then begin
@@ -115,30 +126,13 @@ end;
  end;
 //first IF end
 end;
-    //знаки
-    if (str[j]='+') then begin 
-    //if(bracket_flag=true) then 
-    str[j]:='z';
-    sight:='+';
-    end;
-    if (str[j]='-') then begin 
-    //if(bracket_flag=true) then 
-    str[j]:='z';
-    sight:='-';
-    end;
-    if (str[j]='*') then begin 
-    //if(bracket_flag=true) then 
-    str[j]:='z';
-    sight:='*';
-    end;
+        
    //writeln('data_arr=',data_arr);
   ///\\\///\\\///\\\
   end;
   writeln('data_arr=',data_arr);
   //\\//\\//\\//\\//\\//\\
-  //\\//\\//\\//\\//\\//\\
-  //\\//\\//\\//\\//\\//\\
- end; 
+  end; 
 //writeln('#dot=',dot); 
 //writeln('#str=',str); 
 //writeln('#first_digit=',first_digit);  
@@ -146,19 +140,14 @@ end;
 i:=i+1;
  goto prev;
  next:
-
 {Выводим массив строк}
 for inn := 1 to length(com_mem) do
 begin
 write(com_mem[inn]);
 end;
-writeln;
 //writeln(str);
-writeln();
 //write(str_arr[1]);
-writeln();
 //write(str_arr[2]);
-writeln();
 //write(str_arr[3]);
 
 end.     
