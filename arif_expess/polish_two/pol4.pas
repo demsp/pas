@@ -6,8 +6,8 @@ var
  str_arr: string;                     
  i,k: integer;
  //j:integer;
- bracket_flag:integer;
- first_oper:integer;
+ bracket_flag:boolean;
+ first_oper:boolean;
  sight:char;
  acc:integer;
  i_first_stor:integer;
@@ -36,12 +36,12 @@ str_arr:='[*3[-7[*33]]]';
  if(str_arr[i]='1')or(str_arr[i]='2')or(str_arr[i]='3')
  or(str_arr[i]='4')or(str_arr[i]='5')or(str_arr[i]='6')
  or(str_arr[i]='7')or(str_arr[i]='8')or(str_arr[i]='9')or(str_arr[i]='~') then begin
- if (first_oper=0) then begin 
+ if (first_oper=false) then begin 
  acc:=integer(str_arr[i])-integer('0');
- first_oper:=1;
+ first_oper:=true;
  i_first_stor:=i;
  end;
- if (first_oper=1)and(i<>i_first_stor) then begin
+ if (first_oper=true)and(i<>i_first_stor) then begin
    if (str_arr[i]='~') then begin
    if(sight='+') then acc:=acc+data_arr[i];
    if(sight='-') then acc:=acc-data_arr[i];
@@ -55,32 +55,32 @@ str_arr:='[*3[-7[*33]]]';
    end;
  data_arr[i]:=acc;   
  str_arr[i_first_stor]:='_';
- first_oper:=0;
+ first_oper:=false;
  end;
 //first IF end
 end;
     //знаки
     if (str_arr[i]='+') then begin 
-    if(bracket_flag=1) then str_arr[i]:='z';
+    if(bracket_flag=true) then str_arr[i]:='z';
     sight:='+';
     end;
     if (str_arr[i]='-') then begin 
-    if(bracket_flag=1) then str_arr[i]:='z';
+    if(bracket_flag=true) then str_arr[i]:='z';
     sight:='-';
     end;
     if (str_arr[i]='*') then begin 
-    if(bracket_flag=1) then str_arr[i]:='z';
+    if(bracket_flag=true) then str_arr[i]:='z';
     sight:='*';
     end;
   // скобки
   if (str_arr[i]='[') then begin 
-     acc:=0; first_oper:=0;
-     if(bracket_flag=0) then Push(i);
-     if(bracket_flag=1) then str_arr[i]:='#';
+     acc:=0; first_oper:=false;
+     if(bracket_flag=false) then Push(i);
+     if(bracket_flag=true) then str_arr[i]:='#';
      end;
   if (str_arr[i]=']') then  begin
       str_arr[i]:='#';
-      bracket_flag:=1;
+      bracket_flag:=true;
       Pop();
         i := a[size+1];
         goto prev;
