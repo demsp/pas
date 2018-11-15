@@ -28,8 +28,8 @@ exclamation:=false;
 //com_mem:='[!a[+$$]][!b[*$$]][.a3][.a6][.b8]';
 
 //com_mem:='[!a[-$#]][!b[*3$]][.a52][.b5]';
-com_mem:='!a:$-#.!b:4*$.!c:$+#.~a 8 2.~b 1.%c: a^ b^.';
-//com_mem:='!a:$+#.!b:3*$.!c:$+#.~a 6 3.~b 2.~c 5 4.';
+//com_mem:='!a:$-#.!b:4*$.!c:$+#.~a 8 2.~b 1.%c: a^ b^.';
+com_mem:='!a:$+#.!b:3*$.!c:$-#.~a 5 2.~b 2.%c: a^ b^.';
 
 prev:
  if i>length(com_mem) then goto next; 
@@ -41,15 +41,11 @@ prev:
     (com_mem[i]='d') or
     (com_mem[i]='e') or
     (com_mem[i]='f') then str_index:=integer(com_mem[i])-96;
- ///\\\    ///\\\
  if(com_mem[i]='!')then exclamation:=true;
  if(com_mem[i]='~')then  tilda:=true;
  if(com_mem[i]='%')then  percent:=true;
  if(com_mem[i]='#')then  writeln(data_arr[str_index]);
- if(com_mem[i]='^')then  begin
- acc:=data_arr[str_index];
- //writeln(acc);
- end;
+ if(com_mem[i]='^')then  acc:=data_arr[str_index];
  
 if (exclamation=true)and(com_mem[i]=':') then begin
 while(com_mem[i]<>'.')do begin
@@ -83,14 +79,13 @@ if(percent=true)and(com_mem[i]<>'.') then begin
 //запихиваем строку обратно в str_arr
  if(percent=true)and(com_mem[i]='.') then begin 
    percent:=false;
-  // writeln('dot= ', dot);
-  for j:=1 to length(str) do begin
-  if (str[j]='$') then str[j]:=first_oper;
-  if (str[j]='#') then str[j]:=second_oper;
+   first_flag:=false;
+ for j:=1 to length(str) do begin
+ if (str[j]='$') then str[j]:=first_oper;
+ if (str[j]='#') then str[j]:=second_oper;
     end;
    //str_arr1[str_index]:=str;
-  for j:=1 to length(str) do begin
-  ///\\\///\\\///\\\
+ for j:=1 to length(str) do begin
  //знаки
     if (str[j]='+') or
        (str[j]='-') or
@@ -118,23 +113,18 @@ if(percent=true)and(com_mem[i]<>'.') then begin
    str[j]:='~';
    end;
  data_arr[str_index_stor]:=acc;   
- str[j_first_stor]:='_';
+ //str[j_first_stor]:='_';
  first_flag:=false;
- end;
-//first IF end
-end;
-        
-   //writeln('data_arr=',data_arr);
-  ///\\\///\\\///\\\
+   end;
   end;
-  //writeln('data_arr=',data_arr);
-  //\\//\\//\\//\\//\\//\\
-  end; 
+ //writeln('data_arr=',data_arr);
+ end;
+ //writeln('data_arr=',data_arr);
+end; 
 
 // если тильда
 if(tilda=true)and(com_mem[i]<>'.') then begin
     str:=str_arr[str_index];
-  
 if(com_mem[i]='1')or(com_mem[i]='2')or(com_mem[i]='3')or(com_mem[i]='4')or 
 (com_mem[i]='5')or(com_mem[i]='6')or(com_mem[i]='7')or
 (com_mem[i]='8')or(com_mem[i]='9')then begin
@@ -152,14 +142,12 @@ end;
 //запихиваем строку обратно в str_arr
  if(tilda=true)and(com_mem[i]='.') then begin 
    tilda:=false;
- // writeln('dot= ', dot);
+   first_flag:=false;
   for j:=1 to length(str) do begin
   if (str[j]='$') then str[j]:=first_oper;
   if (str[j]='#') then str[j]:=second_oper;
     end;
-   //str_arr1[str_index]:=str;
   for j:=1 to length(str) do begin
-  ///\\\///\\\///\\\
  //знаки
     if (str[j]='+') or
        (str[j]='-') or
@@ -185,23 +173,17 @@ end;
    if(sight='-') then acc:=acc-(integer(str[j])-integer('0'));
    if(sight='*') then acc:=acc*(integer(str[j])-integer('0'));
    str[j]:='~';
-   end;
+    end;
  data_arr[str_index]:=acc;   
- str[j_first_stor]:='_';
+ //str[j_first_stor]:='_';
  first_flag:=false;
- end;
+   end;
 //first IF end
-end;
-        
-   //writeln('data_arr=',data_arr);
-  ///\\\///\\\///\\\
   end;
-  //writeln('data_arr=',data_arr);
-  //\\//\\//\\//\\//\\//\\
-  end; 
-//writeln('#dot=',dot); 
-//writeln('#str=',str); 
-//writeln('#first_digit=',first_digit);  
+//writeln('data_arr=',data_arr);
+ end;
+//writeln('data_arr=',data_arr);
+end; 
 ///    ///
 i:=i+1;
  goto prev;
