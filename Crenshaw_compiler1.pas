@@ -1,4 +1,7 @@
 
+// https://compilers.iecc.com/crenshaw/tutorfinal.pdf
+// https://yadi.sk/i/G7NU4_8Jnqfy5Q
+
 {--------------------------------------------------------------}
 program Cradle;
 
