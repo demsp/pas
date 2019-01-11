@@ -1,0 +1,18 @@
+$ sudo apt-get install fp-compiler
+
+создаём файл hw.pas следующего содержимого:
+
+program hello;
+begin
+  writeln ('hello, world.')
+end.
+
+компилируем:
+
+$ fpc hw.pas
+...
+
+запускаем получившийся бинарник hw:
+
+$ ./hw
+hello, world.
