@@ -10,7 +10,6 @@ begin
    if(ord(str_arr[i])>=49) and (ord(str_arr[i])<=57)  then begin
       if (digit_flag=0) then begin 
                           digit_flag:=1;
-                           writeln('acc0=',acc);
                           end;
   if (digit_flag=1) then begin
                           acc:=acc*10;
