@@ -19,11 +19,9 @@ var
 //Stack
 procedure push(c : integer);
  begin
- a[size] := c; 
-  writeln('size ',size); 
-  writeln('a[size] ',a[size]); 
+  a[size+1] := c; 
   size := size + 1;
-  end;
+ end;
  
  procedure pop;
  begin
@@ -47,7 +45,7 @@ begin
      if (str_arr[i]=']') then
       begin
       Pop();
-        i := a[size];
+       i := a[size+1];
         writeln('inner_i=',i);
         flag:=1;
         str_arr[i]:=' ';
