@@ -1,11 +1,13 @@
 LABEL prev,string_end;
 var
- a : array[1..10] of integer;
+ a : array[0..10] of integer;
  size : integer;
  str_arr: string;       // команды  
  i:integer;        // индексы строки и массива
-  k:integer;
+ //j:integer;
+ k:integer;
  number:integer;
+  //i_stor: integer; 
 // operation:integer;
  acc:integer;
  
@@ -41,7 +43,7 @@ begin
  pop_flag:=0;
  // size := 1; 
    size := 0; 
- str_arr:='[4 [12]]'; 
+ str_arr:=' [4 [12]]'; 
  prev:
  if i>length(str_arr) then goto string_end; 
     //if (str_arr[i]='+') then data_arr[j]:= data_arr[j]+1;
@@ -111,6 +113,13 @@ begin
      //write(' ');
      end;
      write(' ');
+     writeln();
+     writeln('a[0]=',a[0]);
+     writeln('a[1]=',a[1]);
+     writeln('a[2]=',a[2]);
+     writeln('a[3]=',a[3]);
+     writeln('a[4]=',a[4]);
+     writeln('a[5]=',a[5]);
  goto prev;
  string_end:
 for k:=1 to 10 do 
