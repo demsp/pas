@@ -5,19 +5,33 @@
 var 
 mess:integer;
 
-function add(lambda: integer):integer;
+function _increment(alpha: integer):integer;
  begin
-  add:=lambda+1;
-  //writeln('_= ',lambda);
+  _increment:=alpha+1;
+  //writeln('_= ',alpha);
  end;
  
- function dispatch(lambda: integer):integer;
+function dispatch(alpha: integer):integer;
  begin
-  lambda:=50;
-  mess:=lambda;
-  //writeln('_= ',lambda);
-  
+  alpha:=40;
+  mess:=alpha;
  end;
+ 
+function dispatch1():integer;
+var
+  alpha:integer;
+ begin
+  alpha:=50;
+  dispatch1:=alpha;
+ end;
+// пусть процедура dispatch устанавливает в 50 
+// глобальную мутабельную переменную mess
+ //procedure dispatch();
+ //begin
+ // mess:=50;
+ //end;
+// вызываем  dispatch из main
+ // writeln('main_add(1, mess_10)= ',main_add(5,  dispatch) );
 
 function _add(i: integer; j: integer):integer;
  begin
@@ -47,5 +61,9 @@ begin
         // dispatch(mess)-> add
         // writeln('add(dispath(mess))= ',add(dispatch(mess)));
  writeln('_add(1,2)= ',_add(1,2));
- writeln('main_add(1, mess_10)= ',main_add(1,  dispatch(mess) ) ); //51
+ //writeln('main_add(1, mess_10)= ',main_add(5,  6) );
+ 
+ writeln('main_add(1, mess_10)= ',main_add(2,  dispatch(mess) ) );
+ writeln('main_add(1, mess_10)= ',main_add(5,dispatch1() ) );
+
 end.
