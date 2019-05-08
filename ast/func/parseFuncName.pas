@@ -39,6 +39,7 @@ _str_begining:
      begin
       space:=false;   
       openBrace:= true;
+       writeln('underline=',underline);
      end; 
 i:=i+1;
  goto _str_begining;
