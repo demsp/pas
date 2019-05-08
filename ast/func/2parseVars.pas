@@ -23,12 +23,13 @@ i:=1; //index;
 j:=1; //index
 _str_begining:
  if i>length(progText) then goto _str_end; 
+ writeln('i=',i); // выводим индекс i
  // начало цикла обработки строки
  //######################
  if(progText[i]='_') then underline:=true; 
  if(underline=true) 	then 
     begin
-    if (progText[i]='_') then space:=true;
+    if (progText[i]=' ') then space:=true;
     end;
  if(space=true) then 
     begin       
