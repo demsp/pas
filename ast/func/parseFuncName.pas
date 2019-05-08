@@ -1,10 +1,7 @@
 // progText:='_f(x,y):y-x; f:2,3';
 
 LABEL _str_begining,_str_end;
-var
- //массив строк
-  // каждая строка - это сигнатура функции
-   
+var   
   //variables:array[1..10] of integer; // результат выполниния функции
   //funcNum:array[1..26] of integer;
   numInAlphabet:integer; //номер функции в алфавите
@@ -12,12 +9,10 @@ var
   //matrix: array [1..26, 1..10] of integer; 
   i:integer;
   progText:string;
-  empty_str:string;
   //def:boolean;   //фукция 
   underline,openBrace,closeBrace,space:boolean; //скобки
   
 BEGIN
-empty_str:='           ';
 progText:='_ f(x,y):y-x; f:2,3';
 i:=1; //index;
 _str_begining:
