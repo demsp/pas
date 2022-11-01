@@ -1,6 +1,5 @@
 var
   str:string[30];
-  var_acc:integer;
   i: integer;
   arr:array[0..3] of integer; 
  begin
