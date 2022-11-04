@@ -11,5 +11,5 @@ var
      if Ord(str[i])>=48 then if Ord(str[i])<=58 then arr[var_acc-97]:=Ord(str[i])-48;       
      i:=i+1;
      end; 
-     for j:=0 to 3 do print(arr[j]);
+     for j:=0 to 3 do writeln(arr[j]);
   end.
