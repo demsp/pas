@@ -6,7 +6,7 @@ var
     str:=' a=2 b=3 ';
    while i<length(str) do 
    begin
-     if Ord(str[i])>=97 then if Ord(str[i])<=100 then print(str[i]);
+     if Ord(str[i])>=97 then if Ord(str[i])<=100 then writeln(str[i]);
      i:=i+1;
      end;    
  end.
