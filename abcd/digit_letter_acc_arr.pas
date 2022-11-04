@@ -18,5 +18,5 @@ var
      if str[i]=';' then flag:=false;
      i:=i+1;
      end; 
-     for j:=0 to 3 do print(arr[j]);
+     for j:=0 to 3 do writeln(arr[j]);
   end.
