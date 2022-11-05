@@ -30,6 +30,7 @@ var
      begin
       index_acc := i;
       number_of_iterations := var_acc;
+      flag := false;
      end;
      if str[i]=']' then if arr[number_of_iterations-97]>0 then
      begin
