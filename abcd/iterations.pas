@@ -9,7 +9,7 @@ var
   index_acc:integer;
   
   begin
-    str:=' a=5; b=7; a[ b=b-1; `b ] ';
+    str:=' a=5; a[ `a ] ';
     
    while i<length(str) do 
    begin
@@ -31,12 +31,11 @@ var
       index_acc := i;
       number_of_iterations := var_acc;
      end;
-     if str[i]=']' then
+     if str[i]=']' then if arr[number_of_iterations-97]>0 then
      begin
-       arr[number_of_iteration-97] := arr[number_of_iteration-97]-1; 
+       arr[number_of_iterations-97] := arr[number_of_iterations-97]-1; 
        i := index_acc;
      end;  
-     
      if str[i] = '`' then 
      begin
      i := i+1;
@@ -45,5 +44,5 @@ var
      
      i:=i+1;
      end; 
-     for j:=0 to 3 do writeln(arr[j]);
+     for j:=0 to 3 do write(arr[j],' ');
   end.
