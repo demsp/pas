@@ -4,8 +4,10 @@ var
   i,j: integer;
   arr:array[0..3] of integer; 
   flag: boolean;
+  
   begin
     str:=' a=2; b=3; c=a; ';
+    
    while i<length(str) do 
    begin
      if flag=true then if Ord(str[i])>=97 then if Ord(str[i])<=100 then arr[var_acc-97]:=arr[Ord(str[i])-97];     
@@ -18,5 +20,5 @@ var
      if str[i]=';' then flag:=false;
      i:=i+1;
      end; 
-     for j:=0 to 3 do writeln(arr[j]);
+     for j:=0 to 3 do write(arr[j],' ');
   end.
