@@ -9,7 +9,7 @@ var
   index_acc:integer;
   
   begin
-    str:=' a=5; a[ `a ] ';
+    str:=' a=5; [ `a ] ';
     
    while i<length(str) do 
    begin
@@ -27,11 +27,10 @@ var
        acc:=0;
        end;
      if str[i]='[' then
-     begin
-      index_acc := i;
-      number_of_iterations := var_acc;
-      flag := false;
-     end;
+       begin
+        index_acc := i;
+        number_of_iterations := var_acc;
+       end;
      if str[i]=']' then if arr[number_of_iterations-97]>0 then
      begin
        arr[number_of_iterations-97] := arr[number_of_iterations-97]-1; 
