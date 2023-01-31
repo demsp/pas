@@ -12,12 +12,12 @@ var
     end;
   
   begin
-    str:=' 2+3*4+5; ';
-    operators[0]:='+';
+   str:=' 2+3*4+5; ';
+   operators[0]:='+';
    while i<length(str) do 
    begin
    if str[i]='+' then A;
-   if str[i]='-' then A;
+   if str[i]='*' then A;
     if Ord(str[i])>=48 then if Ord(str[i])<=58 then if operators[j]='+' then
        begin
          operands[j]:=Ord(str[i])-48;
@@ -26,10 +26,11 @@ var
       
       if Ord(str[i])>=48 then if Ord(str[i])<=58 then if operators[j]='*' then 
         begin
-         operators[j]:=' ';
-         acc:=(Ord(str[i])-48)*operands[j-1];
-         writeln('acc=',acc);
-         operands[j-1]:=acc;
+         j:=j-1;
+         acc:=(Ord(str[i])-48)*operands[j];
+         //writeln('acc=',acc);
+         operands[j]:=acc;
+         j:=j+1;
         end;
      i:=i+1;
      end; 
